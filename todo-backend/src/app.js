@@ -1,13 +1,12 @@
 const express = require("express");
+const authRoutes = require("./routes/authRoutes");
+const todoRoutes = require("./routes/todoRoutes");
 
 const app = express();
 
-// Middleware to parse JSON
 app.use(express.json());
 
-// Health check route
-app.get("/", (req, res) => {
-  res.send("API is running");
-});
+app.use("/auth", authRoutes);
+app.use("/todos", todoRoutes);
 
 module.exports = app;
